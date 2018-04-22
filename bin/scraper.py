@@ -12,6 +12,7 @@ RESULTS_PER_PAGE = 120
 
 
 def pause():
+    # Please don't IP-ban me safeguard
     wait = np.random.lognormal(2, 0.5)
     logging.debug('Waiting ' + str(wait) + 's')
     time.sleep(wait)
@@ -47,7 +48,7 @@ def scrape_apt_results_page(listings, url):
         except AttributeError:
             listing.append('')
         listing.append(result.find('span', class_='result-price').text.strip())
-        logging.debug(listing)
+        # logging.debug(listing)
         listings[link.text.strip()] = listing
     return listings
 # endregion
@@ -60,6 +61,7 @@ def scrape_individual_listings(links):
 
     # region helper function definitions
     def listing_extraction(url):
+        logging.debug('listing_extraction(url)')
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'lxml')
         listing = parser.parse_listing(soup)
@@ -70,6 +72,13 @@ def scrape_individual_listings(links):
 
     for link in links:
         pause()
-        result_dict[link] = listing_extraction(link)
+        try:
+            result_dict[link] = listing_extraction(link)
+            logging.debug(result_dict)
+        except:
+            # IndexError?
+            # Dead link
+            continue
+    return pd.DataFrame.from_dict(result_dict, orient='index')
 
 # endregion

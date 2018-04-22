@@ -18,7 +18,9 @@ links = pd.read_csv('../bin/southbay.csv')
 links.columns = ['title', 'link', 'hood', 'price']
 logging.debug(links['link'].head())
 
+data_i_hope_this_works = scraper.scrape_individual_listings(links['link'])
 
-
+#output = scraper.scrape_individual_listings(['https://sfbay.craigslist.org/sby/apa/d/1500-off-on-this-wonderful/6568384604.html', 'https://sfbay.craigslist.org/sby/apa/d/spacious-and-immaculate/6568383937.html'])
+data_i_hope_this_works.to_csv('testrun.csv')
 # TODO check posting title for things like pool, etc.
 
