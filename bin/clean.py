@@ -1,7 +1,10 @@
-import pandas as pd
-import re
 import logging
+import re
+
+import pandas as pd
+
 import parser
+
 
 def clean_data():
     # region private helper functions
