@@ -22,7 +22,6 @@ def parse_listing(soup):
     typeof, laundry, parking, cats, dogs, furnished, nosmoke, wheelchair = detail_extraction(detail_list)
 
     logging.debug(typeof)
-
     listing_details = {
         # 'link': url,
         'bed': bedbath[0],
@@ -118,3 +117,7 @@ def detail_extraction(detail_list):
             parsed_details[0] = detail
             # parsing out of housing type will be handled later
     return parsed_details
+
+
+def parse_housing(df):
+    return df

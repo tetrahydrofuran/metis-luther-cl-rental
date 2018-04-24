@@ -47,7 +47,10 @@ def scrape_apt_results_page(listings, url):
             listing.append(result.find('span', class_='result-hood').text.strip())
         except AttributeError:
             listing.append('')
-        listing.append(result.find('span', class_='result-price').text.strip())
+        try:
+            listing.append(result.find('span', class_='result-price').text.strip())
+        except AttributeError:
+            listing.append('')
         # logging.debug(listing)
         listings[link.text.strip()] = listing
     return listings
