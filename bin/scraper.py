@@ -8,8 +8,6 @@ from bs4 import BeautifulSoup
 
 import parser
 
-# TODO handle neighborhoods by ranking median home price
-
 RESULTS_PER_PAGE = 120
 
 

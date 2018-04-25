@@ -28,7 +28,7 @@ def parse_listing(soup):
         'bath': bedbath[1],
         'sqft': sqft,
         'type': typeof,
-        'lanudry': laundry,
+        'laundry': laundry,
         'parking': parking,
         'cats': cats,
         'dogs': dogs,
@@ -117,7 +117,3 @@ def detail_extraction(detail_list):
             parsed_details[0] = detail
             # parsing out of housing type will be handled later
     return parsed_details
-
-
-def parse_housing(df):
-    return df

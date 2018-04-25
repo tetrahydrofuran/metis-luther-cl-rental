@@ -3,6 +3,7 @@ import logging
 import pandas as pd
 import os
 import clean
+import model
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -19,8 +20,15 @@ nb_url = 'https://sfbay.craigslist.org/search/nby/apa'
 #     northbay = scraper.scrape_apts(ROWS_TO_SCRAPE, nb_url)
 #     southbay.to_csv('../data/southbay.csv')
 #     northbay.to_csv('../data/northbay.csv')
+if not os.path.isfile('../data/merge.csv'):
+    clean.clean_data()
 
-clean.clean_data()
+x, y = clean.prep_model()
+
+lm, selected_x = model.model(x, y)
+model.plot_analyze(lm, selected_x, y)
+
+
 #
 # links = pd.read_csv('../bin/northbay.csv')
 # #links.columns = ['title', 'link', 'hood', 'price']
