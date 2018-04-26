@@ -2,6 +2,7 @@
 
 A utility that is capable of scraping Craigslist search results, and apartment/home rental results specifically.
 The scraped data is used to fit a linear regression model, and plots evaluating the efficacy of the model are generated.
+
 ------
 ### Getting Started
 
