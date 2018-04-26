@@ -16,7 +16,6 @@ def pause():
     Sleeps thread following a log-normal distribution
     :return: None
     """
-    # Please don't IP-ban me safeguard
     wait = np.random.lognormal(2, 0.5)
     logging.debug('Waiting ' + str(wait) + 's')
     time.sleep(wait)
@@ -73,7 +72,6 @@ def scrape_apt_results_page(listings, url):
 
 
 # region Individual page scrape
-# I know lexical scoping can be a bit iffy, but it seemed best here
 def scrape_individual_listings(links):
     """
     Access point for scraping of individual listing detail pages

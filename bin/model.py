@@ -28,7 +28,7 @@ def model(X, y, te_s=0.3):
 
         lasso_grid = GridSearchCV(Lasso(), tune, cv=5, scoring='explained_variance')
         lasso_grid.fit(Xtr, Ytr)
-
+        logging.debug(lasso_grid.best_estimator_)
         return lasso_grid.best_estimator_
 
     def feature_selection(lm, x):
@@ -41,7 +41,7 @@ def model(X, y, te_s=0.3):
         logging.debug('Entering feature_selection()')
         mask = []
         for i in range(len(x.columns)):
-            logging.debug(lm.coef_[i])
+            logging.debug(x.columns[i])
             if lm.coef_[i] == 0:
                 mask.append(False)
                 logging.debug(False)
@@ -72,6 +72,7 @@ def return_coefficients(lm, selected_x):
     :return: zip object containing each coefficient and feature
     """
     zipped = zip(lm.coef_, selected_x)
+    logging.debug(list(zipped))
     return list(zipped)
 
 
@@ -120,8 +121,8 @@ def plot_analyze(lm, X, y, te_s=0.3):
         ax.plot(y_pred, 'o', label='Model-Predicted Price')
         ax.legend(loc='upper right')
         ax.set_xlabel('Listing')
-        ax.set_ylabel('Error')
-        ax.set_title('Errors of Model')
+        ax.set_ylabel('Price')
+        ax.set_title('Predicted Price vs Actual Price')
 
     def qq_plot(resid):
         """QQ Plot of residuals"""

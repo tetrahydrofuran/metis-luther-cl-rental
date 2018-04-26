@@ -6,6 +6,7 @@ import model
 import scraper
 
 # region SETTINGS
+logging.basicConfig(level='INFO')
 ROWS_TO_SCRAPE = 600
 sb_url = 'https://sfbay.craigslist.org/search/sby/apa'
 nb_url = 'https://sfbay.craigslist.org/search/nby/apa'
@@ -21,7 +22,7 @@ if not os.path.isfile('../data/merge.csv'):
     clean.clean_data()
 
 # Option to change to 'merge2.csv'
-x, y = clean.prep_model('merge.csv')
+x, y = clean.prep_model('merge2.csv')
 
 # Fit model and generate plots
 lm, selected_x = model.model(x, y)
