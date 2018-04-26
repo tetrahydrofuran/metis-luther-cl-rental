@@ -64,6 +64,18 @@ def model(X, y, te_s=0.3):
     return lm, selected_x
 
 
+def return_coefficients(lm, selected_x):
+    """
+    Returns the coefficient of regression with the corresponding feature name
+    :param lm: Fitted linear model
+    :param selected_x: pandas DataFrame of features
+    :return: zip object containing each coefficient and feature
+    """
+    zipped = zip(lm.coef_, selected_x)
+    return list(zipped)
+
+
+
 def plot_analyze(lm, X, y, te_s=0.3):
     """
     Generates various plots that evaluate the efficacy of the model

@@ -25,4 +25,7 @@ x, y = clean.prep_model('merge.csv')
 
 # Fit model and generate plots
 lm, selected_x = model.model(x, y)
+
+# List of model coefficients; no application at the moment
+coefficient_list = model.return_coefficients(lm, selected_x)
 model.plot_analyze(lm, selected_x, y)
