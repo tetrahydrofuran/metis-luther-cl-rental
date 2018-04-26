@@ -3,6 +3,11 @@ import re
 
 
 def parse_listing(soup):
+    """
+    Extracts the relevant text from BeautifulSoup object repersenting individual search result.
+    :param soup: BeautifulSoup object containing page data
+    :return: Dictionary of details extracted from the listing
+    """
     logging.debug('parse_listing(soup)')
     shared_line_bubble = soup.find_all('span', class_='shared-line-bubble')
 
@@ -45,6 +50,11 @@ def parse_listing(soup):
 
 
 def detail_extraction(detail_list):
+    """
+    Isolates, identifies, and encodes the variable-length list of amenities on each listing
+    :param detail_list: List of filters and amenities on Craigslist
+    :return: Seven variables representing each of the possible amenities and filters on Craigslist
+    """
     logging.debug('detail_extraction(detail_list)')
     # typeof, laundry, parking, cats, dogs, furnished, nosmoke, wheelchair
     parsed_details = [0, 0, 0, 0, 0, 0, 0, 0]
